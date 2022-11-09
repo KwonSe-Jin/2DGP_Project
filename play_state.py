@@ -1,15 +1,11 @@
 from pico2d import *
 from Background1 import Background
-from Move import Move
+from Move import Pika
 import game_framework
 import title_state
-
+import game_world
 def handle_events():
-    global running
-    global dirx
-    global diry
-    global locate
-    global frame2
+    global running, dirx, diry, locate, frame2
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -55,7 +51,6 @@ def handle_events():
             elif event.key == SDLK_w or event.key == SDLK_UP:
                 pikachu.locate = 0
                 pikachu2.locate = 0
-            # pikachu.jump = 0
 
         if event.type == SDL_QUIT:
             game_framework.quit()
@@ -70,10 +65,12 @@ running = None
 # 초기화
 def enter():
     global pikachu, pikachu2, back, running
-    pikachu = Move(100, False)
-    pikachu2 = Move(700, True)
+    pikachu = Pika(100, False)
+    pikachu2 = Pika(700, True)
     back = Background()
-    running = True
+    game_world.add_object(back, 0)
+    game_world.add_object(pikachu, 1)
+    game_world.add_object(pikachu2, 2)
 # 종료
 def exit():
     global pikachu, pikachu2, back
@@ -81,12 +78,19 @@ def exit():
     del pikachu2
     del back
 def update():
-    pikachu.update()
-    pikachu2.update()
+    for game_object in game_world.all_objects():
+        game_object.update()
+def draw_world():
+    for game_object in game_world.all_objects():
+        game_object.draw()
 def draw():
     clear_canvas()
-    back.draw()
-    pikachu.draw()
-    pikachu2.draw()
+    draw_world()
     update_canvas()
     delay(0.03)
+
+def pause():
+    pass
+
+def resume():
+    pass

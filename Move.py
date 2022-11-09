@@ -2,8 +2,7 @@ from pico2d import*
 import os
 os.chdir('C:\\Users\\sejin\\Documents\\GitHub\\2DGP_Project\\resource')
 
-
-class Move:
+class Pika:
     def __init__(self, x, isReverse = False):
         self.x = x
         self.y = 95
