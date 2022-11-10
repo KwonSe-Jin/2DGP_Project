@@ -30,12 +30,16 @@ class Pika:
                 self.jump = 0
         else:
             self.y = 95
+
     def draw(self):
         if self.locate:
             self.image.clip_draw(self.frame*64, self.locate * 64, 64, 64, self.x, self.y, 100, 100)
         else:
             self.image.clip_draw(0, 320, 64, 64, self.x, self.y, 100, 100)
+        draw_rectangle(*self.get_bb())
 
+    def get_bb(self):
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 
 
 
