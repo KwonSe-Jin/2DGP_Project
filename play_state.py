@@ -4,6 +4,7 @@ from Move import Pika
 import game_framework
 import title_state
 import game_world
+import collision
 from Ball import Ball
 from Background1 import Net
 def handle_events():
@@ -88,6 +89,7 @@ def exit():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
+
 def draw_world():
     for game_object in game_world.all_objects():
         game_object.draw()

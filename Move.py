@@ -1,4 +1,5 @@
 from pico2d import*
+import collision
 import os
 os.chdir('C:\\Users\\sejin\\Documents\\GitHub\\2DGP_Project\\resource')
 
@@ -20,6 +21,8 @@ class Pika:
     def update(self):
         self.frame = (self.frame + 1) % self.frame2
         self.x += self.dirx * 5
+        # if self.x < 400:
+        #     self.x -= 1
         if self.jump == 1:
             self.y += 15
             if self.y >= 300:
