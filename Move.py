@@ -22,8 +22,6 @@ class Pika:
     def update(self):
         self.frame = (self.frame + 1) % self.frame2
         self.x += self.dirx * 5
-        # if self.x < 400:
-        #     self.x -= 1
         if self.jump == 1:
             self.y += 15
             if self.y >= 300:
@@ -41,10 +39,8 @@ class Pika:
         else:
             self.image.clip_draw(0, 320, 64, 64, self.x, self.y, 100, 100)
         draw_rectangle(*self.get_bb())
-
-        # self.font.draw(self.x - 60, self.y + 50, f'(Time: {get_time():.2f})', (255, 255, 0))
     def get_bb(self):
-        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
+        return self.x - 30, self.y + 10, self.x + 40, self.y + 50
 
 
 

@@ -36,19 +36,22 @@ class Ball:
             self.b_speedx = -self.b_speedx
             self.x = 750
         if self.y <= 50:
-            print("bottom")
-            self.point += 1
             self.b_speedy = -self.b_speedy
             self.y = 50
         elif self.y >= 550:
             self.b_speedy = -self.b_speedy
             self.y = 550
-
+        if  self.x > 400 and self.y <= 50:
+            print("bottom")
+            self.point += 1
 
         if (collision.collide(self, play_state.pikachu)):
             self.b_speedx = -self.b_speedx
             self.b_speedy = -self.b_speedy
         if (collision.collide(self, play_state.pikachu2)):
+            self.b_speedx = -self.b_speedx
+            self.b_speedy = -self.b_speedy
+        if (collision.collide(self, play_state.net)):
             self.b_speedx = -self.b_speedx
             self.b_speedy = -self.b_speedy
 
