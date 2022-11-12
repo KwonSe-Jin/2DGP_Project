@@ -18,6 +18,7 @@ class Pika:
         self.diry = 0
         self.jump = 0
         self.locate = 0
+
     def update(self):
         self.frame = (self.frame + 1) % self.frame2
         self.x += self.dirx * 5
@@ -41,6 +42,7 @@ class Pika:
             self.image.clip_draw(0, 320, 64, 64, self.x, self.y, 100, 100)
         draw_rectangle(*self.get_bb())
 
+        # self.font.draw(self.x - 60, self.y + 50, f'(Time: {get_time():.2f})', (255, 255, 0))
     def get_bb(self):
         return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 

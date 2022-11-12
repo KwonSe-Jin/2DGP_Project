@@ -7,6 +7,7 @@ import game_world
 import collision
 from Ball import Ball
 from Background1 import Net
+
 def handle_events():
     global running, dirx, diry, locate, frame2
     events = get_events()
