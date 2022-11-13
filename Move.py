@@ -24,7 +24,7 @@ class Pika:
         self.x += self.dirx * 5
         if self.jump == 1:
             self.y += 15
-            if self.y >= 300:
+            if self.y >= 400:
                 self.jump = -1
         elif self.jump == -1:
             self.y -= 15

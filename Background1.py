@@ -1,16 +1,16 @@
 from pico2d import *
+import game_framework
+import title_state
 import Ball
 class Background:
     def __init__(self):
         self.image = load_image('background.png')
-
     def draw(self):
         self.image.draw(400, 300)
 
 
     def update(self):
         pass
-
 class Net:
     def __init__(self):
         self.net = load_image('net.png')
