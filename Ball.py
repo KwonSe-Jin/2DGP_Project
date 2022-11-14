@@ -25,27 +25,32 @@ class Ball:
         return self.x - 25, self.y - 25, self.x + 25, self.y + 25
     def draw(self):
         self.image.clip_draw(self.frame * 40, 0, 40, 40, self.x, self.y, 50, 50)
-        self.Lfont.draw(100, 550, str(self.Lpoint), (255, 255, 250))
-        self.Rfont.draw(700, 550, str(self.Rpoint), (255, 255, 250))
+        self.Lfont.draw(100, 550, str(self.Lpoint), (255, 0, 0))
+        self.Rfont.draw(700, 550, str(self.Rpoint), (255, 0, 0))
         draw_rectangle(*self.get_bb())
 
     def update(self):
         self.frame = (self.frame + 1) % 5
         if (collision.collide(self, play_state.pikachu)):
             self.init_spd_y = 20
-            self.to_x = -self.to_x
+            self.to_x = 5
             self.to_y = self.init_spd_y
-            self.x += self.to_x * 3
-            self.y += self.to_y
+            if(play_state.pikachu.jump == 1):
+                self.init_spd_y = 40
+                self.to_x = 23
+                self.to_y = self.init_spd_y
         if (collision.collide(self, play_state.pikachu2)):
             self.init_spd_y = 20
-            self.to_x = -self.to_x
+            self.to_x = -5
             self.to_y = self.init_spd_y
-            self.x += self.to_x
-            self.y += self.to_y
+            if(play_state.pikachu2.jump == 1):
+                self.init_spd_y = 40
+                self.to_x = -23
+                self.to_y = self.init_spd_y
         if (collision.collide(self, play_state.net)):
             self.to_x = -self.to_x
-            self.to_y = self.init_spd_y
+            self.to_y = 5
+        # self.init_spd_y =
         if self.x <= 50 or self.x >= 750:
             self.to_x = -self.to_x
         if self.y < 50:
@@ -61,16 +66,21 @@ class Ball:
             print("bottom")
             self.x = 650
             self.y = 300
+            play_state.pikachu2.x = 650
+            play_state.pikachu.x = 150
             self.Lpoint += 1
+            self.to_x = 6
+            # self.init_spd_y = 15
             delay(1)
         if self.x < 400 and self.y < 50:
             print("bottom")
             self.x = 150
             self.y = 300
+            play_state.pikachu2.x = 650
+            play_state.pikachu.x = 150
             self.Rpoint += 1
+            self.to_x = -6
             delay(1)
-
-
 
         if self.Lpoint == 5 or self.Rpoint == 5:
             game_framework.change_state(title_state)

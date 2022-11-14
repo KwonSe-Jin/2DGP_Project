@@ -1,6 +1,7 @@
 from pico2d import*
 import collision
 import os
+import play_state
 os.chdir('C:\\Users\\sejin\\Documents\\GitHub\\2DGP_Project\\resource')
 
 class Pika:
@@ -32,6 +33,11 @@ class Pika:
                 self.jump = 0
         else:
             self.y = 95
+        if (collision.collide(play_state.pikachu, play_state.net)):
+            play_state.pikachu.x = 350
+        if (collision.collide(play_state.pikachu2, play_state.net)):
+            play_state.pikachu2.x = 450
+
 
     def draw(self):
         if self.locate:
