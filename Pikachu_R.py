@@ -2,21 +2,19 @@ from pico2d import*
 import collision
 import os
 import play_state
-os.chdir('C:\\Users\\sejin\\Documents\\GitHub\\2DGP_Project\\resource')
 
-class Pika:
+class Pikachu_R:
     def __init__(self):
-        self.x = 150
+        self.x = 650
         self.y = 70
         self.frame = 0
         self.frame2 = 5
-        self.image = load_image('Pikachu.png')
+        self.image = load_image('Pikachu'+'_R'+'.png')
         self.dirx = 0
         self.diry = 0
         self.jump = 0
         self.locate = 0
-        self.time = 0
-        self.isskill = 0
+
     def update(self):
         self.frame = (self.frame + 1) % self.frame2
         self.x += self.dirx * 5
@@ -30,11 +28,8 @@ class Pika:
                 self.jump = 0
         else:
             self.y = 70
-
-        if (collision.collide(play_state.pikachu, play_state.net)):
-            play_state.pikachu.x = 350
-
-
+        if (collision.collide(play_state.pikachu2, play_state.net)):
+            play_state.pikachu2.x = 450
 
     def draw(self):
         if self.locate:
@@ -43,7 +38,7 @@ class Pika:
             self.image.clip_draw(0, 320, 64, 64, self.x, self.y, 100, 100)
         draw_rectangle(*self.get_bb())
     def get_bb(self):
-        return self.x - 10, self.y - 30, self.x + 40, self.y + 40
+        return self.x - 40, self.y - 30, self.x + 10, self.y + 40
 
 
 

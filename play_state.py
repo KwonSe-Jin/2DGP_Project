@@ -1,6 +1,7 @@
 from pico2d import *
 from Background1 import Background
 from Pikachu import Pika
+from Pikachu_R import Pikachu_R
 import game_framework
 import title_state
 import game_world
@@ -61,9 +62,12 @@ def handle_events():
             if event.key == SDLK_RIGHT or event.key == SDLK_LEFT or event.key == SDLK_DOWN:
                 pikachu2.dirx = 0
                 pikachu2.locate = 0
-            elif event.key == SDLK_w or event.key == SDLK_UP or event.key == SDLK_q or event.key == SDLK_p:
+            elif event.key == SDLK_w or event.key == SDLK_UP or event.key == SDLK_p:
                 pikachu.locate = 0
                 pikachu2.locate = 0
+            elif event.key == SDLK_q:
+                # pikachu.time = 0
+                pikachu.locate = 0
 
         if event.type == SDL_QUIT:
             game_framework.quit()
@@ -76,33 +80,36 @@ back = None
 ball = None
 net = None
 running = None
-nettop = None
+netTop = None
 # 초기화
 def enter():
-    global pikachu, pikachu2, back, running, ball, net, nettop
-    pikachu = Pika(100, False)
-    pikachu2 = Pika(700, True)
+    global pikachu, pikachu2, back, running, ball, net, netTop
+    pikachu = Pika()
+    pikachu2 = Pikachu_R()
     ball = Ball()
     back = Background()
     net = Net()
-    nettop = NetTop()
+    netTop = NetTop()
     game_world.add_object(back, 0)
     game_world.add_object(pikachu, 1)
     game_world.add_object(ball, 3)
     game_world.add_object(pikachu2, 2)
     game_world.add_object(net, 4)
-    game_world.add_object(nettop, 5)
+    game_world.add_object(netTop, 5)
 # 종료
 def exit():
-    global pikachu, pikachu2, back, ball, net, nettop
-    del pikachu, pikachu2, back, ball, net, nettop
+    global pikachu, pikachu2, back, ball, net, netTop
+    del pikachu, pikachu2, back, ball, net, netTop
+    game_world.clear()
 def update():
+    # pikachu.
     for game_object in game_world.all_objects():
         game_object.update()
 
 def draw_world():
     for game_object in game_world.all_objects():
         game_object.draw()
+
 def draw():
     clear_canvas()
     draw_world()
@@ -114,3 +121,12 @@ def pause():
 
 def resume():
     pass
+
+def test_self():
+    import play_state
+    pico2d.open_canvas()
+    game_framework.run(play_state)
+    pico2d.clear_canvas()
+
+if __name__ == '__main__':
+    test_self()

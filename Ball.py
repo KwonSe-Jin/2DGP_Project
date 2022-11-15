@@ -52,16 +52,16 @@ class Ball:
                     self.init_spd_y = 40
                     self.to_x = -40
                     self.to_y = self.init_spd_y
-        if (collision.collide(self, play_state.nettop)):
+        if (collision.collide(self, play_state.netTop)):
             self.to_x = -self.to_x
             self.to_y = 5
         if (collision.collide(self, play_state.net)):
             self.to_x = -self.to_x
-            self.to_y = -7
-        # self.init_spd_y =
+            self.to_y = -16
+
         if self.x <= 50 or self.x >= 750:
             self.to_x = -self.to_x
-        if self.y < 50:
+        if self.y < 40:
             self.to_y = self.init_spd_y
             self.init_spd_y -= 2
         else:
@@ -70,24 +70,26 @@ class Ball:
             self.to_y = -self.to_y
         self.x += self.to_x
         self.y += self.to_y
-        if self.x > 400 and self.y < 50:
+        if self.x > 400 and self.y < 40:
             print("bottom")
             self.x = 650
             self.y = 300
             play_state.pikachu2.x = 650
             play_state.pikachu.x = 150
+            play_state.pikachu.time = 0
             self.Lpoint += 1
             self.to_x = 0
             delay(1)
-        if self.x < 400 and self.y < 50:
+        if self.x < 400 and self.y < 40:
             print("bottom")
             self.x = 150
             self.y = 300
             play_state.pikachu2.x = 650
             play_state.pikachu.x = 150
+            play_state.pikachu.time = 0
             self.Rpoint += 1
             self.to_x = 0
-            delay(1)
+            delay(2)
 
         if self.Lpoint == 5 or self.Rpoint == 5:
             game_framework.change_state(end_state)

@@ -15,7 +15,7 @@ class Net:
     def __init__(self):
         self.net = load_image('NetBottom.png')
         self.x = 400
-        self.y = 150
+        self.y = 130
     def draw(self):
         self.net.draw(self.x, self.y)
         draw_rectangle(*self.get_bb())
@@ -28,11 +28,11 @@ class NetTop:
     def __init__(self):
         self.net = load_image('NetTop.png')
         self.x = 400
-        self.y = 280
+        self.y = 250
     def draw(self):
         self.net.draw(self.x, self.y)
         draw_rectangle(*self.get_bb())
     def update(self):
         pass
     def get_bb(self):
-        return self.x - 5, self.y - 20, self.x + 5, self.y + 15
+        return self.x - 18, self.y - 15, self.x + 18, self.y + 15
