@@ -19,6 +19,7 @@ class Pika:
         self.diry = 0
         self.jump = 0
         self.locate = 0
+        self.isskill = 0
 
     def update(self):
         self.frame = (self.frame + 1) % self.frame2
@@ -37,6 +38,7 @@ class Pika:
             play_state.pikachu.x = 350
         if (collision.collide(play_state.pikachu2, play_state.net)):
             play_state.pikachu2.x = 450
+
 
 
     def draw(self):
