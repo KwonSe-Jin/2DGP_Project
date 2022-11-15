@@ -1,15 +1,16 @@
 from pico2d import *
 from Background1 import Background
-from Move import Pika
+from Pikachu import Pika
 import game_framework
 import title_state
 import game_world
-import collision
 from Ball import Ball
 from Background1 import Net
+from Background1 import NetTop
+
 
 def handle_events():
-    global running, dirx, diry, locate, frame2
+    global running
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -69,32 +70,32 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(title_state)
 
-
 pikachu = None
 pikachu2 = None
 back = None
 ball = None
 net = None
 running = None
+nettop = None
 # 초기화
 def enter():
-    global pikachu, pikachu2, back, running, ball, net
+    global pikachu, pikachu2, back, running, ball, net, nettop
     pikachu = Pika(100, False)
     pikachu2 = Pika(700, True)
     ball = Ball()
     back = Background()
     net = Net()
+    nettop = NetTop()
     game_world.add_object(back, 0)
     game_world.add_object(pikachu, 1)
     game_world.add_object(ball, 3)
     game_world.add_object(pikachu2, 2)
     game_world.add_object(net, 4)
+    game_world.add_object(nettop, 5)
 # 종료
 def exit():
-    global pikachu, pikachu2, back, ball, net
-    del pikachu
-    del pikachu2
-    del back, ball, net
+    global pikachu, pikachu2, back, ball, net, nettop
+    del pikachu, pikachu2, back, ball, net, nettop
 def update():
     for game_object in game_world.all_objects():
         game_object.update()

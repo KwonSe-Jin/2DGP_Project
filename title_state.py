@@ -1,7 +1,6 @@
 import game_framework
 from pico2d import *
 import play_state
-import Move
 
 image = None
 

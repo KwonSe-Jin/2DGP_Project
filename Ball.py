@@ -1,20 +1,17 @@
 import collision
 from pico2d import *
 import play_state
-import Background1
 import game_framework
-import title_state
 import end_state
 
 class Ball:
     def __init__(self):
        self.image = load_image('ball.png')
        self.frame = 0
-       self.x = 550
-       self.y = 300
-       self.to_x = 4
+       self.x = 400
+       self.y = 500
+       self.to_x = 0
        self.to_y = 6
-       # self.init_spd_x = 10
        self.init_spd_y = 30
        self.Lfont = load_font('ENCR10B.TTF', 75)
        self.Lpoint = 0
@@ -55,9 +52,12 @@ class Ball:
                     self.init_spd_y = 40
                     self.to_x = -40
                     self.to_y = self.init_spd_y
-        if (collision.collide(self, play_state.net)):
+        if (collision.collide(self, play_state.nettop)):
             self.to_x = -self.to_x
             self.to_y = 5
+        if (collision.collide(self, play_state.net)):
+            self.to_x = -self.to_x
+            self.to_y = -7
         # self.init_spd_y =
         if self.x <= 50 or self.x >= 750:
             self.to_x = -self.to_x
@@ -77,8 +77,7 @@ class Ball:
             play_state.pikachu2.x = 650
             play_state.pikachu.x = 150
             self.Lpoint += 1
-            self.to_x = 6
-            # self.init_spd_y = 15
+            self.to_x = 0
             delay(1)
         if self.x < 400 and self.y < 50:
             print("bottom")
@@ -87,7 +86,7 @@ class Ball:
             play_state.pikachu2.x = 650
             play_state.pikachu.x = 150
             self.Rpoint += 1
-            self.to_x = -6
+            self.to_x = 0
             delay(1)
 
         if self.Lpoint == 5 or self.Rpoint == 5:
