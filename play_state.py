@@ -8,7 +8,7 @@ import game_world
 from Ball import Ball
 from Background1 import Net
 from Background1 import NetTop
-
+from point import Point
 
 def handle_events():
     global running
@@ -81,25 +81,28 @@ ball = None
 net = None
 running = None
 netTop = None
+point = None
 # 초기화
 def enter():
-    global pikachu, pikachu2, back, running, ball, net, netTop
+    global pikachu, pikachu2, back, running, ball, net, netTop, point
     pikachu = Pika()
     pikachu2 = Pikachu_R()
     ball = Ball()
     back = Background()
     net = Net()
     netTop = NetTop()
+    point = Point()
     game_world.add_object(back, 0)
     game_world.add_object(pikachu, 1)
     game_world.add_object(ball, 3)
     game_world.add_object(pikachu2, 2)
     game_world.add_object(net, 4)
     game_world.add_object(netTop, 5)
+    game_world.add_object(point, 6)
 # 종료
 def exit():
-    global pikachu, pikachu2, back, ball, net, netTop
-    del pikachu, pikachu2, back, ball, net, netTop
+    global pikachu, pikachu2, back, ball, net, netTop, point
+    del pikachu, pikachu2, back, ball, net, netTop, point
     game_world.clear()
 def update():
     # pikachu.

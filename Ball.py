@@ -1,32 +1,28 @@
 import collision
 from pico2d import *
 import play_state
-import game_framework
-import end_state
+import game_world
 
 class Ball:
     def __init__(self):
        self.image = load_image('ball.png')
        self.frame = 0
-       self.x = 400
+       self.x = 150
        self.y = 500
        self.to_x = 0
        self.to_y = 6
-       self.init_spd_y = 30
-       self.Lfont = load_font('ENCR10B.TTF', 75)
-       self.Lpoint = 0
-       self.Rfont = load_font('ENCR10B.TTF', 75)
-       self.Rpoint = 0
+       self.init_spd_y = 6
+
 
     def get_bb(self):
         return self.x - 25, self.y - 25, self.x + 25, self.y + 25
     def draw(self):
         self.image.clip_draw(self.frame * 40, 0, 40, 40, self.x, self.y, 50, 50)
-        self.Lfont.draw(100, 550, str(self.Lpoint), (255, 0, 0))
-        self.Rfont.draw(700, 550, str(self.Rpoint), (255, 0, 0))
-        draw_rectangle(*self.get_bb())
+        # draw_rectangle(*self.get_bb())
 
     def update(self):
+        if game_world.objects[1][0].win == True or game_world.objects[1][0].lose == True:
+            game_world.remove_object(self)
         self.frame = (self.frame + 1) % 5
         if (collision.collide(self, play_state.pikachu)):
             self.init_spd_y = 20
@@ -70,27 +66,4 @@ class Ball:
             self.to_y = -self.to_y
         self.x += self.to_x
         self.y += self.to_y
-        if self.x > 400 and self.y < 40:
-            print("bottom")
-            self.x = 650
-            self.y = 300
-            play_state.pikachu2.x = 650
-            play_state.pikachu.x = 150
-            play_state.pikachu.time = 0
-            self.Lpoint += 1
-            self.to_x = 0
-            delay(1)
-        if self.x < 400 and self.y < 40:
-            print("bottom")
-            self.x = 150
-            self.y = 300
-            play_state.pikachu2.x = 650
-            play_state.pikachu.x = 150
-            play_state.pikachu.time = 0
-            self.Rpoint += 1
-            self.to_x = 0
-            delay(2)
-
-        if self.Lpoint == 5 or self.Rpoint == 5:
-            game_framework.change_state(end_state)
 
