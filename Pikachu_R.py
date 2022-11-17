@@ -44,10 +44,12 @@ class Pikachu_R:
             self.lose = True
             self.locate = 0
             self.frame2 = 5
+            self.time = 0
         elif (play_state.point.Rpoint == 2):
             self.win = True
             self.locate = 1
             self.frame2 = 5
+            self.time = 0
 
     def draw(self):
         if self.lose == False and self.win == False:
