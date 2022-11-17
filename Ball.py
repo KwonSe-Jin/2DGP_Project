@@ -7,7 +7,7 @@ class Ball:
     def __init__(self):
        self.image = load_image('ball.png')
        self.frame = 0
-       self.x = 400
+       self.x = 150
        self.y = 500
        self.to_x = 0
        self.to_y = 6

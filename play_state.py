@@ -34,7 +34,7 @@ def handle_events():
                         pikachu.jump = 1
                         pikachu.locate = 4
                 elif event.key == SDLK_q:
-                    if pikachu.time >= 100:
+                    if pikachu.time >= 10:
                         pikachu.jump = 1
                         pikachu.locate = 6
                         pikachu.time = 0
@@ -53,9 +53,10 @@ def handle_events():
                         pikachu2.jump = 1
                         pikachu2.locate = 4
                 elif event.key == SDLK_p:
-                    if pikachu2.jump == 0:
+                    if pikachu2.time >= 10:
                         pikachu2.jump = 1
                         pikachu2.locate = 6
+                        pikachu2.time = 0
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_d or event.key == SDLK_a or event.key == SDLK_s:
                 pikachu.dirx = 0

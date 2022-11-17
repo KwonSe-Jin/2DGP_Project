@@ -27,10 +27,10 @@ class Pika:
     def update(self):
         self.frame = (self.frame + 1) % self.frame2
 
-        if self.time < 100:
-            self.time += 1
+        if self.time < 10:
+            self.time += 0.03
         else:
-            self.time = 100
+            self.time = 10
         if self.lose == False and self.win == False:
             self.x += self.dirx * 5
             if self.jump == 1:
@@ -72,7 +72,7 @@ class Pika:
             self.image.clip_draw(256, self.locate * 64, 64, 64, self.x, self.y, 100, 100)
             delay(0.05)
         # draw_rectangle(*self.get_bb())
-        self.font.draw(self.x, self.y + 60, str(self.time), (255, 0, 255))
+        self.font.draw(self.x, self.y + 60, str(int(self.time)), (255, 0, 255))
 
         if self.celebrete == 50:
             game_framework.change_state(end_state)

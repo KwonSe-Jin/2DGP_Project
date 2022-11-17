@@ -16,9 +16,16 @@ class Pikachu_R:
         self.locate = 0
         self.win = False
         self.lose = False
+        self.qjump = 0
+        self.font = load_font('ENCR10B.TTF', 25)
+        self.time = 0
 
     def update(self):
         self.frame = (self.frame + 1) % self.frame2
+        if self.time < 10:
+            self.time += 0.03
+        else:
+            self.time = 10
         if self.lose == False and self.win == False:
             self.x += self.dirx * 5
             if self.jump == 1:
@@ -55,5 +62,6 @@ class Pikachu_R:
             self.image.clip_draw(256, self.locate * 64, 64, 64, self.x, self.y, 100, 100)
             delay(0.05)
         # draw_rectangle(*self.get_bb())
+        self.font.draw(self.x - 10, self.y + 60, str(int(self.time)), (255, 0, 255))
     def get_bb(self):
         return self.x - 40, self.y - 30, self.x + 10, self.y + 40
