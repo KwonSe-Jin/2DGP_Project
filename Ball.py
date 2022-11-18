@@ -51,6 +51,7 @@ class Ball:
         if (collision.collide(self, play_state.netTop)):
             self.to_x = -self.to_x
             self.to_y = 5
+
         if (collision.collide(self, play_state.net)):
             self.to_x = -self.to_x
             self.to_y = -16
