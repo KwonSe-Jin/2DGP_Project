@@ -19,6 +19,7 @@ class Squirtle:
         # self.qjump = 0
         # self.font = load_font('ENCR10B.TTF', 25)
         # self.time = 0
+        self.c = 0
 
     def update(self):
         self.frame = (self.frame + 1) % self.frame2

@@ -104,16 +104,16 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(title_state)
 
-pikachu = None
-pikachu2 = None
-back = None
-ball = None
-net = None
-running = None
-netTop = None
-point = None
-squirtle = None
-squirtle2 = None
+# pikachu = None
+# pikachu2 = None
+# back = None
+# ball = None
+# net = None
+# running = None
+# netTop = None
+# point = None
+# squirtle = None
+# squirtle2 = None
 # 초기화
 def enter():
     global pikachu, pikachu2, back, running, ball, net, netTop, point, squirtle2, squirtle
@@ -127,18 +127,18 @@ def enter():
     squirtle = Squirtle()
     squirtle2 = Squirtle_R()
     game_world.add_object(back, 0)
-    # game_world.add_object(pikachu, 1)
+    game_world.add_object(pikachu, 1)
     game_world.add_object(squirtle2, 1)
     game_world.add_object(ball, 3)
-    # game_world.add_object(pikachu2, 2)
+    game_world.add_object(pikachu2, 2)
     game_world.add_object(squirtle, 2)
     game_world.add_object(net, 4)
     game_world.add_object(netTop, 5)
     game_world.add_object(point, 6)
 # 종료
 def exit():
-    global pikachu, pikachu2, back, ball, net, netTop, point
-    del pikachu, pikachu2, back, ball, net, netTop, point
+    global pikachu, pikachu2, back, ball, net, netTop, point, squirtle, squirtle2
+    del pikachu, pikachu2, back, ball, net, netTop, point, squirtle, squirtle2
     game_world.clear()
 def update():
     # pikachu.

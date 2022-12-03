@@ -1,6 +1,7 @@
 import game_framework
 from pico2d import *
 import play_state
+import game_world
 
 image = None
 
@@ -12,13 +13,23 @@ def exit():
     global image
     del image
 
+
 def handle_events():
+
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_z):
             game_framework.change_state(play_state)
+            play_state.pikachu.z = 1
+            game_world.remove_object(play_state.squirtle2)
+            game_world.remove_object(play_state.squirtle)
+        elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_c):
+            game_framework.change_state(play_state)
+            play_state.squirtle.c = 1
+            game_world.remove_object(play_state.pikachu)
+            game_world.remove_object(play_state.pikachu2)
         elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
             game_framework.quit()
 
