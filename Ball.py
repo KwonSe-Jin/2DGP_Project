@@ -12,7 +12,8 @@ class Ball:
        self.to_x = 0
        self.to_y = 6
        self.init_spd_y = 6
-
+       self.touch = load_wav('touch.wav')
+       self.spike = load_wav('spike.wav')
 
     def get_bb(self):
         return self.x - 25, self.y - 25, self.x + 25, self.y + 25
@@ -28,6 +29,9 @@ class Ball:
             self.init_spd_y = 20
             self.to_x = 5
             self.to_y = self.init_spd_y
+            self.touch.play(1)
+            self.touch.set_volume(40)
+            # self.touch.repeat_play()
             if(play_state.pikachu.jump == 1):
                 self.init_spd_y = 30
                 self.to_x = 23
@@ -36,10 +40,14 @@ class Ball:
                     self.init_spd_y = 40
                     self.to_x = 40
                     self.to_y = self.init_spd_y
+                    self.spike.play(1)
+                    self.spike.set_volume(60)
         if (collision.collide(self, play_state.pikachu2)):
             self.init_spd_y = 20
             self.to_x = -5
             self.to_y = self.init_spd_y
+            self.touch.play(1)
+            self.touch.set_volume(40)
             if(play_state.pikachu2.jump == 1):
                 self.init_spd_y = 30
                 self.to_x = -23
@@ -48,6 +56,42 @@ class Ball:
                     self.init_spd_y = 40
                     self.to_x = -40
                     self.to_y = self.init_spd_y
+                    self.spike.play(1)
+                    self.spike.set_volume(60)
+
+        if (collision.collide(self, play_state.squirtle)):
+            self.init_spd_y = 20
+            self.to_x = -5
+            self.to_y = self.init_spd_y
+            if(play_state.squirtle.jump == 1):
+                self.init_spd_y = 30
+                self.to_x = -23
+                self.to_y = self.init_spd_y
+                if (play_state.squirtle.locate == 6):
+                    self.init_spd_y = 40
+                    self.to_x = -40
+                    self.to_y = self.init_spd_y
+
+        if (collision.collide(self, play_state.squirtle2)):
+            self.init_spd_y = 20
+            self.to_x = 5
+            self.to_y = self.init_spd_y
+            if (play_state.squirtle2.jump == 1):
+                self.init_spd_y = 30
+                self.to_x = 23
+                self.to_y = self.init_spd_y
+                if (play_state.squirtle2.locate == 6):
+                    self.init_spd_y = 40
+                    self.to_x = 40
+                    self.to_y = self.init_spd_y
+
+
+
+
+
+
+
+
         if (collision.collide(self, play_state.netTop)):
             self.to_x = -self.to_x
             self.to_y = 5
