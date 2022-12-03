@@ -2,7 +2,6 @@ from pico2d import *
 from Background1 import Background
 from Pikachu import Pika
 from Pikachu_R import Pikachu_R
-from Squirtle_R import Squirtle_R
 import game_framework
 import title_state
 import game_world
@@ -10,6 +9,7 @@ from Ball import Ball
 from Background1 import Net
 from Background1 import NetTop
 from point import Point
+from Squirtle_R import Squirtle_R
 from Squirtle import Squirtle
 
 def handle_events():
@@ -116,7 +116,7 @@ squirtle = None
 squirtle2 = None
 # 초기화
 def enter():
-    global pikachu, pikachu2, back, running, ball, net, netTop, point, squirtle, squirtle2
+    global pikachu, pikachu2, back, running, ball, net, netTop, point, squirtle2, squirtle
     pikachu = Pika()
     pikachu2 = Pikachu_R()
     ball = Ball()
@@ -137,8 +137,8 @@ def enter():
     game_world.add_object(point, 6)
 # 종료
 def exit():
-    global pikachu, pikachu2, back, ball, net, netTop, point, squirtle, squirtle2
-    del pikachu, pikachu2, back, ball, net, netTop, point, squirtle, squirtle2
+    global pikachu, pikachu2, back, ball, net, netTop, point
+    del pikachu, pikachu2, back, ball, net, netTop, point
     game_world.clear()
 def update():
     # pikachu.

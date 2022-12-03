@@ -1,12 +1,12 @@
 import game_framework
 from pico2d import *
-import select
+import play_state
 
 image = None
 
 def enter():
     global image
-    image = load_image('Title.png')
+    image = load_image('select.png')
 
 def exit():
     global image
@@ -17,8 +17,8 @@ def handle_events():
     for event in events:
         if event.type == SDL_QUIT:
             game_framework.quit()
-        elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-            game_framework.change_state(select)
+        elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_z):
+            game_framework.change_state(play_state)
         elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
             game_framework.quit()
 
