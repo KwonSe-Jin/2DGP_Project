@@ -2,20 +2,19 @@ import game_framework
 from pico2d import *
 import play_state
 import game_world
-
-image = None
+import title_state
+image1 = None
 
 def enter():
-    global image
-    image = load_image('select.png')
+    global image1
+    image1 = load_image('select.png')
 
 def exit():
-    global image
-    del image
+    global image1
+    del image1
 
 
 def handle_events():
-
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -31,11 +30,11 @@ def handle_events():
             game_world.remove_object(play_state.pikachu)
             game_world.remove_object(play_state.pikachu2)
         elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
-            game_framework.quit()
+            game_framework.change_state(title_state)
 
 def draw():
     clear_canvas()
-    image.draw(400,300)
+    image1.draw(400,300)
     update_canvas()
 
 def update():

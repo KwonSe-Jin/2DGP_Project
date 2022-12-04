@@ -3,7 +3,7 @@ from Background1 import Background
 from Pikachu import Pika
 from Pikachu_R import Pikachu_R
 import game_framework
-import title_state
+import select
 import game_world
 from Ball import Ball
 from Background1 import Net
@@ -102,18 +102,18 @@ def handle_events():
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-            game_framework.change_state(title_state)
+            game_framework.change_state(select)
 
-# pikachu = None
-# pikachu2 = None
-# back = None
-# ball = None
-# net = None
-# running = None
-# netTop = None
-# point = None
-# squirtle = None
-# squirtle2 = None
+pikachu = None
+pikachu2 = None
+back = None
+ball = None
+net = None
+running = None
+netTop = None
+point = None
+squirtle = None
+squirtle2 = None
 # 초기화
 def enter():
     global pikachu, pikachu2, back, running, ball, net, netTop, point, squirtle2, squirtle

@@ -31,7 +31,7 @@ class Point:
             delay(1)
         if play_state.ball.x < 400 and play_state.ball.y < 40:
             print("R_bottom")
-            play_state.ball.x = 650
+            play_state.ball.x = 150
             play_state.ball.y = 550
             play_state.pikachu2.x = 650
             play_state.squirtle.x = 650
