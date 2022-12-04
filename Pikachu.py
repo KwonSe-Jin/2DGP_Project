@@ -1,10 +1,8 @@
 from pico2d import*
 import collision
-import os
 import play_state
 import end_state
 import game_framework
-os.chdir('C:\\Users\\sejin\\Documents\\GitHub\\2DGP_Project\\resource')
 
 class Pika:
     def __init__(self):

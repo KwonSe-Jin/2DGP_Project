@@ -3,7 +3,6 @@ from Background1 import Background
 from Pikachu import Pika
 from Pikachu_R import Pikachu_R
 import game_framework
-import select
 import game_world
 from Ball import Ball
 from Background1 import Net
@@ -11,6 +10,7 @@ from Background1 import NetTop
 from point import Point
 from Squirtle_R import Squirtle_R
 from Squirtle import Squirtle
+import title_state
 
 def handle_events():
     global running
@@ -102,7 +102,7 @@ def handle_events():
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-            game_framework.change_state(select)
+            game_framework.change_state(title_state)
 
 pikachu = None
 pikachu2 = None
@@ -161,11 +161,11 @@ def pause():
 def resume():
     pass
 
-def test_self():
-    import play_state
-    pico2d.open_canvas()
-    game_framework.run(play_state)
-    pico2d.clear_canvas()
-
-if __name__ == '__main__':
-    test_self()
+# def test_self():
+#     import play_state
+#     pico2d.open_canvas()
+#     game_framework.run(play_state)
+#     pico2d.clear_canvas()
+#
+# if __name__ == '__main__':
+#     test_self()
