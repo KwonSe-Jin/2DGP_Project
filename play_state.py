@@ -93,9 +93,7 @@ def handle_events():
                 pikachu2.locate = 0
                 squirtle.locate = 0
                 squirtle2.locate = 0
-                # pikachu2.locate = 0
             elif event.key == SDLK_q:
-                # pikachu.time = 0
                 pikachu.locate = 0
                 pikachu2.locate = 0
 

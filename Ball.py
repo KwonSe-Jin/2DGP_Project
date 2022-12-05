@@ -19,7 +19,6 @@ class Ball:
         return self.x - 25, self.y - 25, self.x + 25, self.y + 25
     def draw(self):
         self.image.clip_draw(self.frame * 40, 0, 40, 40, self.x, self.y, 50, 50)
-        # draw_rectangle(*self.get_bb())
 
     def update(self):
         if game_world.objects[1][0].win == True or game_world.objects[1][0].lose == True:
@@ -32,7 +31,6 @@ class Ball:
                     self.to_y = self.init_spd_y
                     self.touch.play(1)
                     self.touch.set_volume(40)
-                    # self.touch.repeat_play()
                     if(play_state.pikachu.jump == 1):
                         self.init_spd_y = 30
                         self.to_x = 23

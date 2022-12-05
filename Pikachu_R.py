@@ -63,7 +63,6 @@ class Pikachu_R:
         elif self.lose == True:
             self.image.clip_draw(256, self.locate * 64, 64, 64, self.x, self.y, 100, 100)
             delay(0.05)
-        # draw_rectangle(*self.get_bb())
         self.font.draw(self.x - 10, self.y + 60, str(int(self.time)), (255, 0, 255))
     def get_bb(self):
         return self.x - 40, self.y - 30, self.x + 10, self.y + 40

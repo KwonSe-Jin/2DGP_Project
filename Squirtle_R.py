@@ -19,16 +19,11 @@ class Squirtle_R:
         self.win = False
         self.lose = False
         self.celebrete = 0
-        # self.qjump = 0
-        # self.font = load_font('ENCR10B.TTF', 25)
-        # self.time = 0
+
 
     def update(self):
         self.frame = (self.frame + 1) % self.frame2
-        # if self.time < 10:
-        #     self.time += 0.03
-        # else:
-        #     self.time = 10
+
         if self.lose == False and self.win == False:
             self.x += self.dirx * 5
             if self.jump == 1:
@@ -47,13 +42,11 @@ class Squirtle_R:
             self.win = True
             self.locate = 4
             self.frame2 = 3
-            # self.time = 0
             self.celebrete += 1
         elif (play_state.point.Rpoint == 2):
             self.lose = True
             self.locate = 5
             self.frame2 = 5
-            # self.time = 0
             self.celebrete += 1
 
     def draw(self):
@@ -68,8 +61,6 @@ class Squirtle_R:
         elif self.lose == True:
             self.image.clip_composite_draw(256, self.locate * 64, 64, 64, 0, 'h', self.x, self.y, 120, 120)
             delay(0.05)
-        # draw_rectangle(*self.get_bb())
-        # self.font.draw(self.x - 10, self.y + 60, str(int(self.time)), (255, 0, 255))
         if self.celebrete == 50:
             game_framework.change_state(end_state)
     def get_bb(self):

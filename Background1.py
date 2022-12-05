@@ -22,7 +22,6 @@ class Net:
         self.y = 120
     def draw(self):
         self.net.draw(self.x, self.y)
-        # draw_rectangle(*self.get_bb())
     def update(self):
         pass
     def get_bb(self):
@@ -35,7 +34,6 @@ class NetTop:
         self.y = 250
     def draw(self):
         self.net.draw(self.x, self.y)
-        # draw_rectangle(*self.get_bb())
     def update(self):
         pass
     def get_bb(self):
